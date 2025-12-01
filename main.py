@@ -1,16 +1,11 @@
-# This is a sample Python script.
+from openai import OpenAI
+client = OpenAI()
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+#TODO: test if env api key is set
 
+response = client.responses.create(
+    model="gpt-5-nano",
+    input="Write a one-sentence summary of a random CV."
+)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print(response.output_text)
