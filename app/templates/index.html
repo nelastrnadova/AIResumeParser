@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+  <h1>TODO:</h1>
+  <ol>
+      <li>create endpoind to upload file to</li>
+      <li>file upload form</li>
+      <li>use ajax to return form data?</li>
+  </ol>
+    <form action="#" method="post" enctype=multipart/form-data>
+      <label>cv: </label><input type="file" id="file" name="cv"><br>
+      <input type="submit" value="Upload">
+    </form>
+{% endblock %}
