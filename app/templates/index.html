@@ -4,7 +4,36 @@
     <h1>Upload a cv to parse</h1>
     <h2>and wait a bit for the ai to do it's ai thing</h2>
     <form action="#" method="post" enctype=multipart/form-data>
-      <label>cv: </label><input type="file" id="file" name="cv"><br>
-      <input type="submit" value="Upload">
+        <label>cv: </label><input type="file" id="cv_file" name="cv"><br>
+        <button type="button" onclick="uploadCV()">Upload</button>
     </form>
+    <label id="progress_lbl"></label>
+
+    <script>
+        function uploadCV() {
+            console.log("test");
+            var progress_lbl = document.getElementById("progress_lbl");
+            progress_lbl.innerText = "uploading the file bby. pls wait"
+            var cv = document.getElementById("cv_file").files[0]; //index outta range array? never heard of her
+            var base64cv = processCV(cv);
+            console.log(base64cv);
+            // call endpoint with base64cv
+        }
+
+        function processCV(file) {
+            // TODO: let user know its uploading
+            // Convert file to base64
+            var fr = new FileReader();
+            fr.readAsDataURL(file);
+
+            fr.onloadend = function (e) {
+                if(e.target.readyState == FileReader.DONE) {
+                    var encoded_cv = fr.result.split("base64,")[1];
+                    console.log(encoded_cv)
+                }
+            }
+            return "not done yet"
+            //return result.split("base64,")[1]  // no index outta range in my code bby
+        }
+    </script>
 {% endblock %}
